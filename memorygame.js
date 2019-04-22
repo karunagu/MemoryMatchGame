@@ -33,13 +33,15 @@ for (i = 1; i <= numberCells; i++) {
   var randomIdx = (Math.ceil(Math.random() * numberCells));
   console.log('i', randomIdx);
   j = 1;
-  while (j < locationList.length) {
+  while (j <= locationList.length) {
     if (locationList[j] === randomIdx) {
       randomIdx = (Math.ceil(Math.random() * numberCells));
+      console.log('j', randomIdx);
       j = 1;
     }
-    j++;
-
+    else{
+      j++;
+    }
   }
   locationList[i] = randomIdx;
 }
@@ -51,3 +53,5 @@ while (i < MemoryItem.allImages.length) {
   i++;
   j = j + 2;
 }
+console.log ('MemoryItem.allImages:');
+console.log (MemoryItem.allImages);
