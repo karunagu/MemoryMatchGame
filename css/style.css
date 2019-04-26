@@ -29,7 +29,8 @@ p {
   }
   
 .card-down,
-.card-up
+.card-up,
+.cardMatched
  {
     margin-top: 20px;
     width: 100%;
@@ -83,4 +84,22 @@ p {
   font-family: Josefin Sans;
   font-size: 16px;
   float: right;
+}
+
+@keyframes matchAnim {
+  0% {
+    background: #bcffcc;
+    opacity: .3;
+  }
+  100% {
+    background: white;
+    opacity: 1;
+  }
+}
+
+.cardMatched {
+  animation-name: matchAnim;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-delay: .4s;
 }
