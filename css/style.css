@@ -29,7 +29,8 @@ p {
   }
   
 .card-down,
-.card-up
+.card-up,
+.cardMatched
  {
     margin-top: 300px;
     width: 100%;
@@ -51,4 +52,22 @@ p {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
+  }
+
+  @keyframes matchAnim {
+    0% {
+      background: #bcffcc;
+      opacity: .3;
+    }
+    100% {
+      background: white;
+      opacity: 1;
+    }
+  }
+
+  .cardMatched {
+    animation-name: matchAnim;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+		animation-delay: .4s;
   }
