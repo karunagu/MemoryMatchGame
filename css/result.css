@@ -1,21 +1,38 @@
 table, th, td {
         border: 1px solid black;
         padding: 10px;
+        font-family: Josefin Sans;
+        font-size: 24px;
 }
-body{
-    background-color: rgb(74, 153, 153);
+
+body {
+    font-family: Josefin Sans;
+    font-size: 24px;
+    background: rgb(74, 75, 77);
 }
-table{
-   margin-left: 400px;
+
+table {
+   margin-left: 310px;
    margin-top: 100px;
-   background-color: bisque;
-
-
+   background-color: rgb(131, 153, 182);
+   font-family: Josefin Sans;
+   font-size: 24px;
 }
-Header{
+
+Header {
     text-align: center;
     text-decoration-color: brown;
-    text-size-adjust: 30px;
     padding: 20px;
-    background-color: aquamarine;
+    background-color: rgb(116, 137, 197);
+    font-family: Josefin Sans;
+    font-size: 24px;
+    color: white;
 }
+
+.home {
+    text-align: center;
+    color: white;
+    font-family: Josefin Sans;
+    font-size: 16px;
+    float: right;
+  }

@@ -1,73 +1,105 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
- }
- 
- h1 {
-    float: 300px;
-    position: center;
-    text-align: center;
-    font-family: Josefin Sans;
-    font-size: 24px;
-    padding: 30px;
-    background-color: rgb(125, 153, 230)
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+
+  position: center;
+  text-align: center;
+  font-family: Josefin Sans;
+  font-size: 24px;
+  padding: 25px;
+  background-color: rgb(116, 137, 197);
 }
 
 p {
-    font-size: 14px;
-    font-family: Josefin Sans;
-    text-align: center;
-    padding: 10px;
+  font-size: 14px;
+  font-family: Josefin Sans;
+  text-align: center;
+  padding: 10px;
 }
 .cards {
-    margin-top: 100px;
-    width: calc(25% - 10px);
-    height: calc(25% - 10px);
-    margin: 5px;
-    position: relative;
-  }
-  
+  margin-top: 50px;
+  width: calc(25% - 10px);
+  height: calc(25% - 10px);
+  margin: 5px;
+  position: relative;
+}
+
 .card-down,
 .card-up,
 .cardMatched
- {
-    margin-top: 300px;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    border-radius: 10px;
-    padding: 5px;
-    margin-right: 40px;
-  }
+{
+  margin-top: 20px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 5px;
+  border-radius: 10px;
+  padding: 1px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
 
-  body {
-    height: 100vh;
-    background: rgb(165, 166, 173);
-  }
+body {
+  height: 100vh;
+  background: rgb(74, 75, 77);
+  color: white;
+}
 
-  .memory-match {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
+.memory-match {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  @keyframes matchAnim {
-    0% {
-      background: #bcffcc;
-      opacity: .3;
-    }
-    100% {
-      background: white;
-      opacity: 1;
-    }
-  }
+.start-button {
+  margin-left: 560px;
+  background-color: rgb(128, 112, 197);
+  padding: 10px 32px;
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  border: none;
+  font-family: Josefin Sans;
+  font-size: 16px;
+  position: left;
+}
 
-  .cardMatched {
-    animation-name: matchAnim;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-		animation-delay: .4s;
-  }
+.center {
+  text-align: center;
+  color: rgb(167, 165, 185);
+  font-family: Josefin Sans;
+  font-size: 16px;
+  padding: 8px 26px;
+}
+
+.high-score {
+text-align: center;
+color: white;
+font-family: Josefin Sans;
+font-size: 16px;
+float: right;
+}
+
+@keyframes matchAnim {
+0% {
+  background: #bcffcc;
+  opacity: .3;
+}
+100% {
+  background: white;
+  opacity: 1;
+}
+}
+
+.cardMatched {
+animation-name: matchAnim;
+animation-duration: 1s;
+animation-timing-function: ease-in-out;
+animation-delay: .4s;
+}
