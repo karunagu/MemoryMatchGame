@@ -31,12 +31,12 @@ new MemoryItem('amsterdam', 'img/amsterdam.jpg');
 // function randomCell() {
 for (i = 1; i <= numberCells; i++) {
   var randomIdx = (Math.ceil(Math.random() * numberCells));
-  console.log('i', randomIdx);
+  //console.log('i', randomIdx);
   j = 1;
   while (j <= locationList.length) {
     if (locationList[j] === randomIdx) {
       randomIdx = (Math.ceil(Math.random() * numberCells));
-      console.log('j', randomIdx);
+      //console.log('j', randomIdx);
       j = 1;
     }
     else{
@@ -55,3 +55,13 @@ while (i < MemoryItem.allImages.length) {
 }
 console.log ('MemoryItem.allImages:');
 console.log (MemoryItem.allImages);
+
+var img1 = document.getElementById('block1');
+var img2 = document.getElementById('block2');
+img1.addEventListener('click', itemClick);
+img2.addEventListener('click', itemClick);
+
+function itemClick(event){
+  console.log('test', event.target);
+  console.log('event id test:', this.id);
+}
