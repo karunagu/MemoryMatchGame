@@ -10,6 +10,8 @@ var startButton = document.getElementById('start-button');
 startButton.addEventListener('click', shuffleImages);
 
 var cardDownImgPath = 'img/card-down.png';
+var prevClickID = '';
+var imgMatch, prevImgMatch;
 
 //Array to store all the images
 MemoryItem.allImages = [];
@@ -96,10 +98,12 @@ function shuffleImages(){
     MemoryItem.allImages[i].completed = 0;
 
     // Set the image source for the above cells and add onClick Event Listener
-    document.getElementById(MemoryItem.allImages[i].loc1).src = MemoryItem.allImages[i].filepath;
+    //document.getElementById(MemoryItem.allImages[i].loc1).src = MemoryItem.allImages[i].filepath;
+    document.getElementById(MemoryItem.allImages[i].loc1).src = cardDownImgPath;
     document.getElementById(MemoryItem.allImages[i].loc1).addEventListener('click', itemClick);
 
-    document.getElementById(MemoryItem.allImages[i].loc2).src = MemoryItem.allImages[i].filepath;
+    //document.getElementById(MemoryItem.allImages[i].loc2).src = MemoryItem.allImages[i].filepath;
+    document.getElementById(MemoryItem.allImages[i].loc2).src = cardDownImgPath;
     document.getElementById(MemoryItem.allImages[i].loc2).addEventListener('click', itemClick);
     i++;
     j = j + 2;
@@ -108,35 +112,92 @@ function shuffleImages(){
   console.log (MemoryItem.allImages);
 }
 
+function calcImgMatch (currentLoc, adjLoc, currObjID) {
+  imgMatch[currentLoc] = 'd';
+  if (clickCount % 2 === 0) {
+    if (imgMatch[adjLoc] === 'd') {
+      imgMatch.completed = 1;
+      document.getElementById(currObjID).src = imgMatch.filepath;
+      alert('CORRECT GUESS!');
+    }
+    else {
+      imgMatch[currentLoc] = 'c';
+      prevImgMatch.statusLoc1 = 'c';
+      prevImgMatch.statusLoc2 = 'c';
+      
+      document.getElementById(currObjID).src = cardDownImgPath;
+      console.log('Closing previous image');
+      document.getElementById(prevClickID).src = cardDownImgPath;
 
+    }
+  }
+  // Else for odd number
+  else {
+    document.getElementById(currObjID).src = imgMatch.filepath;
+  }
+  console.log('calcImgMatch function end imgMatch:', imgMatch);
+}
 
 function itemClick(event){
   //console.log('test', event.target);
   clickCount++;
   console.log('event id test:', this);
   console.log('Click Count =', clickCount);
+  console.log('prevClickID before:', prevClickID);
 
 
-
-  var imgMatch = MemoryItem.allImages.find(item => item.loc1 === this.id);
+  imgMatch = MemoryItem.allImages.find(item => item.loc1 === this.id);
   if (imgMatch !== undefined && imgMatch.completed === 0) {
-    imgMatch.statusLoc1 = 'd';
-    if (clickCount % 2 === 0 && imgMatch.statusLoc2 === 'd') {
-      imgMatch.completed = 1;
-      alert('CORRECT GUESS!');
+    calcImgMatch('statusLoc1', 'statusLoc2', this.id);
+    prevImgMatch = imgMatch;
+    /*imgMatch.statusLoc1 = 'd';
+    if (clickCount % 2 === 0) {
+      if (imgMatch.statusLoc2 === 'd') {
+        imgMatch.completed = 1;
+        document.getElementById(this.id).src = imgMatch.filepath;
+        alert('CORRECT GUESS!');
+      }
+      else {
+        imgMatch.statusLoc1 = 'c';
+        document.getElementById(this.id).src = cardDownImgPath;
+        console.log('Closing previous image');
+        document.getElementById(prevClickID).src = cardDownImgPath;
+      }
     }
+    // Else for odd number
+    else {
+      document.getElementById(this.id).src = imgMatch.filepath;
+    }*/
   }
   console.log('Array lookup loc1:', imgMatch);
 
+
   imgMatch = MemoryItem.allImages.find(item => item.loc2 === this.id);
   if (imgMatch !== undefined && imgMatch.completed === 0) {
-    imgMatch.statusLoc2 = 'd';
-    if (clickCount % 2 === 0 && imgMatch.statusLoc1 === 'd') {
-      imgMatch.completed = 1;
-      alert('CORRECT GUESS!');
+    calcImgMatch('statusLoc2', 'statusLoc1', this.id);
+    prevImgMatch = imgMatch;
+    /*imgMatch.statusLoc2 = 'd';
+    if (clickCount % 2 === 0) {
+      if (imgMatch.statusLoc1 === 'd') {
+        imgMatch.completed = 1;
+        document.getElementById(this.id).src = imgMatch.filepath;
+        alert('CORRECT GUESS!');
+      }
+      else {
+        imgMatch.statusLoc2 = 'c';
+        document.getElementById(this.id).src = cardDownImgPath;
+        console.log('Closing previous image');
+        document.getElementById(prevClickID).src = cardDownImgPath;
+      }
     }
+    // Else for odd number
+    else {
+      document.getElementById(this.id).src = imgMatch.filepath;
+    }*/
   }
   console.log('Array lookup loc2:', imgMatch);
   //shuffleImages();
   //this.src = cardDownImgPath;
+  prevClickID = this.id;
+  console.log('prevClickID after:', prevClickID);
 }
