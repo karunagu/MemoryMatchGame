@@ -21,7 +21,6 @@ p {
   padding: 10px;
 }
 .cards {
-  margin-top: 50px;
   width: calc(25% - 10px);
   height: calc(25% - 10px);
   margin: 5px;
@@ -58,7 +57,7 @@ body {
 }
 
 .start-button {
-  margin-left: 560px;
+  margin-left: 570px;
   background-color: rgb(128, 112, 197);
   padding: 10px 32px;
   text-decoration: none;
@@ -94,7 +93,6 @@ float: right;
 100% {
   background: white;
   opacity: 1;
-}
 }
 
 .cardMatched {
