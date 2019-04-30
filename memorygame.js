@@ -3,7 +3,7 @@
 //Variables
 var numberCells = 20;
 var numberImages = numberCells/2;
-var locationList = [], imgID = [];
+var locationList = [];
 var i,j, clickCount = 0;
 
 var startButton = document.getElementById('start-button');
@@ -53,12 +53,12 @@ function randomNumber() {
 
   for (i = 1; i <= numberCells; i++) {
     var randomIdx = (Math.ceil(Math.random() * numberCells));
-    //console.log('i', randomIdx);
+
     j = 1;
     while (j <= locationList.length) {
       if (locationList[j] === randomIdx) {
         randomIdx = (Math.ceil(Math.random() * numberCells));
-        //console.log('j', randomIdx);
+
         j = 1;
       }
       else{
@@ -68,12 +68,7 @@ function randomNumber() {
 
     // Assign the generated random number to the Location List array
     locationList[i] = randomIdx;
-    //imgID[i] = document.getElementById('cell-' + i);
-    //imgID[i].addEventListener('click', itemClick);
   }
-
-  //console.log ('imgID[]:');
-  //console.log (imgID);
 }
 
 
@@ -98,11 +93,9 @@ function shuffleImages(){
     MemoryItem.allImages[i].completed = 0;
 
     // Set the image source for the above cells and add onClick Event Listener
-    //document.getElementById(MemoryItem.allImages[i].loc1).src = MemoryItem.allImages[i].filepath;
     document.getElementById(MemoryItem.allImages[i].loc1).src = cardDownImgPath;
     document.getElementById(MemoryItem.allImages[i].loc1).addEventListener('click', itemClick);
 
-    //document.getElementById(MemoryItem.allImages[i].loc2).src = MemoryItem.allImages[i].filepath;
     document.getElementById(MemoryItem.allImages[i].loc2).src = cardDownImgPath;
     document.getElementById(MemoryItem.allImages[i].loc2).addEventListener('click', itemClick);
     i++;
@@ -124,7 +117,7 @@ function calcImgMatch (currentLoc, adjLoc, currObjID) {
       imgMatch[currentLoc] = 'c';
       prevImgMatch.statusLoc1 = 'c';
       prevImgMatch.statusLoc2 = 'c';
-      
+
       document.getElementById(currObjID).src = cardDownImgPath;
       console.log('Closing previous image');
       document.getElementById(prevClickID).src = cardDownImgPath;
@@ -150,24 +143,6 @@ function itemClick(event){
   if (imgMatch !== undefined && imgMatch.completed === 0) {
     calcImgMatch('statusLoc1', 'statusLoc2', this.id);
     prevImgMatch = imgMatch;
-    /*imgMatch.statusLoc1 = 'd';
-    if (clickCount % 2 === 0) {
-      if (imgMatch.statusLoc2 === 'd') {
-        imgMatch.completed = 1;
-        document.getElementById(this.id).src = imgMatch.filepath;
-        alert('CORRECT GUESS!');
-      }
-      else {
-        imgMatch.statusLoc1 = 'c';
-        document.getElementById(this.id).src = cardDownImgPath;
-        console.log('Closing previous image');
-        document.getElementById(prevClickID).src = cardDownImgPath;
-      }
-    }
-    // Else for odd number
-    else {
-      document.getElementById(this.id).src = imgMatch.filepath;
-    }*/
   }
   console.log('Array lookup loc1:', imgMatch);
 
@@ -176,28 +151,10 @@ function itemClick(event){
   if (imgMatch !== undefined && imgMatch.completed === 0) {
     calcImgMatch('statusLoc2', 'statusLoc1', this.id);
     prevImgMatch = imgMatch;
-    /*imgMatch.statusLoc2 = 'd';
-    if (clickCount % 2 === 0) {
-      if (imgMatch.statusLoc1 === 'd') {
-        imgMatch.completed = 1;
-        document.getElementById(this.id).src = imgMatch.filepath;
-        alert('CORRECT GUESS!');
-      }
-      else {
-        imgMatch.statusLoc2 = 'c';
-        document.getElementById(this.id).src = cardDownImgPath;
-        console.log('Closing previous image');
-        document.getElementById(prevClickID).src = cardDownImgPath;
-      }
-    }
-    // Else for odd number
-    else {
-      document.getElementById(this.id).src = imgMatch.filepath;
-    }*/
   }
+
   console.log('Array lookup loc2:', imgMatch);
-  //shuffleImages();
-  //this.src = cardDownImgPath;
+
   prevClickID = this.id;
   console.log('prevClickID after:', prevClickID);
 }
