@@ -8,6 +8,8 @@ var i,j, clickCount = 0;
 
 var startButton = document.getElementById('start-button');
 startButton.addEventListener('click', shuffleImages);
+startButton.addEventListener('click', resetCSSClass);
+startButton.addEventListener('click', changeButton);
 
 var cardDownImgPath = 'img/card-down.png';
 var prevClickID = '';
@@ -135,6 +137,9 @@ function itemClick(event){
   console.log('Click Count =', clickCount);
   console.log('prevClickID before:', prevClickID);
 
+  document.getElementById(this.id).classList.toggle('card-up'); //add card-up
+  document.getElementById(this.id).classList.toggle('card-down'); //remove card-down
+
 
   imgMatch = MemoryItem.allImages.find(item => item.loc1 === this.id);
   if (imgMatch !== undefined && imgMatch.completed === 0) {
@@ -159,12 +164,68 @@ function itemClick(event){
 
   //close the images after certain time incase of incorrect picks
   setTimeout(function(){
-    var clickedPics = document.getElementsByClassName('notMatched');
+    var clickedPics = document.getElementsByClassName('notMatched'); //this is a live object
     for(var cp=0; cp<clickedPics.length; cp++){
       clickedPics[cp].src = cardDownImgPath;
+      clickedPics[cp].classList.toggle('card-up');
+      clickedPics[cp].classList.toggle('card-down');
     }
     while(clickedPics.length){
       clickedPics[0].classList.remove('notMatched');
     }
   }, 1000);
+
+  if(isGameCompleted()){
+    storeResults();
+    alert('Congratulations On Completing Game. You Have Ok Memory');
+  }
 }
+
+function isGameCompleted(){
+  var completedCells = document.getElementsByClassName('cardMatched');
+  if(completedCells.length === numberCells){
+    return true;
+  }
+  return false;
+}
+
+//Array to store all the results
+Result.allResults = [];
+
+
+//Result object
+function Result(name, clickCount, datePlayed) {
+  this.name = name;
+  this.clickCount = clickCount;
+  this.datePlayed = datePlayed;
+  Result.allResults.push(this);
+}
+
+function storeResults(){
+  //retrieve results already stored
+  var storageResults = localStorage.getItem('memorygame.results');
+  if(storageResults){
+    Result.allResults = JSON.parse(storageResults);
+  }
+  var nameInput = document.getElementsByName('FirstName')[0];
+  var date = new Date();
+  var dateFormat = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
+  new Result(nameInput.value, clickCount, dateFormat);
+  localStorage.setItem('memorygame.results', JSON.stringify(Result.allResults));
+}
+
+function resetCSSClass(){
+  var cssCells = document.querySelectorAll('.cardMatched, .notMatched, .card-up'); //not live object
+  for(var cc=0; cc<cssCells.length; cc++){
+    cssCells[cc].classList.remove('cardMatched', 'notMatched', 'card-up');
+    cssCells[cc].classList.add('card-down');
+  }
+}
+
+function changeButton(){
+  var currentVal = startButton.innerText;
+  if(currentVal === 'Start Game'){
+    startButton.innerText = 'Reset Game';
+  }
+}
+

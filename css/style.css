@@ -102,3 +102,8 @@ animation-duration: 1s;
 animation-timing-function: ease-in-out;
 animation-delay: .4s;
 }
+.card-up,
+.cardMatched,
+.notMatched {
+  pointer-events: none;
+}
