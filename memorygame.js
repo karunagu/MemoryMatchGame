@@ -39,7 +39,6 @@ new MemoryItem('newyork', 'img/newyork.jpg');
 new MemoryItem('pariseiffel', 'img/pariseiffel.jpg');
 new MemoryItem('paristower', 'img/paristower.jpg');
 new MemoryItem('prague', 'img/prague.jpg');
-new MemoryItem('rome', 'img/rome.jpg');
 new MemoryItem('sanfran', 'img/sanfran.jpg');
 new MemoryItem('seattle', 'img/seattle.jpg');
 new MemoryItem('tajmahal', 'img/tajmahal.jpg');
@@ -111,17 +110,15 @@ function calcImgMatch (currentLoc, adjLoc, currObjID) {
     if (imgMatch[adjLoc] === 'd') {
       imgMatch.completed = 1;
       document.getElementById(currObjID).src = imgMatch.filepath;
-      alert('CORRECT GUESS!');
+      document.getElementById(currObjID).className += ' cardMatched';
+      document.getElementById(prevClickID).className += ' cardMatched';
     }
     else {
       imgMatch[currentLoc] = 'c';
       prevImgMatch.statusLoc1 = 'c';
       prevImgMatch.statusLoc2 = 'c';
-
-      document.getElementById(currObjID).src = cardDownImgPath;
-      console.log('Closing previous image');
-      document.getElementById(prevClickID).src = cardDownImgPath;
-
+      document.getElementById(currObjID).className += ' notMatched';
+      document.getElementById(prevClickID).className += ' notMatched';
     }
   }
   // Else for odd number
@@ -141,6 +138,7 @@ function itemClick(event){
 
   imgMatch = MemoryItem.allImages.find(item => item.loc1 === this.id);
   if (imgMatch !== undefined && imgMatch.completed === 0) {
+    document.getElementById(this.id).src = imgMatch.filepath;
     calcImgMatch('statusLoc1', 'statusLoc2', this.id);
     prevImgMatch = imgMatch;
   }
@@ -149,6 +147,7 @@ function itemClick(event){
 
   imgMatch = MemoryItem.allImages.find(item => item.loc2 === this.id);
   if (imgMatch !== undefined && imgMatch.completed === 0) {
+    document.getElementById(this.id).src = imgMatch.filepath;
     calcImgMatch('statusLoc2', 'statusLoc1', this.id);
     prevImgMatch = imgMatch;
   }
@@ -157,4 +156,15 @@ function itemClick(event){
 
   prevClickID = this.id;
   console.log('prevClickID after:', prevClickID);
+
+  //close the images after certain time incase of incorrect picks
+  setTimeout(function(){
+    var clickedPics = document.getElementsByClassName('notMatched');
+    for(var cp=0; cp<clickedPics.length; cp++){
+      clickedPics[cp].src = cardDownImgPath;
+    }
+    while(clickedPics.length){
+      clickedPics[0].classList.remove('notMatched');
+    }
+  }, 1000);
 }

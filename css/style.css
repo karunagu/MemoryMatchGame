@@ -29,7 +29,8 @@ p {
 
 .card-down,
 .card-up,
-.cardMatched
+.cardMatched,
+.notMatched
 {
   margin-top: 20px;
   width: 100%;
@@ -86,15 +87,15 @@ float: right;
 }
 
 @keyframes matchAnim {
-0% {
+ 0% {
   background: #bcffcc;
   opacity: .3;
-}
-100% {
+ }
+ 100% {
   background: white;
   opacity: 1;
+ }
 }
-
 .cardMatched {
 animation-name: matchAnim;
 animation-duration: 1s;
