@@ -86,6 +86,14 @@ font-size: 16px;
 float: right;
 }
 
+.about{
+  text-align: center;
+  color: white;
+  font-family: Josefin Sans;
+  font-size: 16px;
+  float: right;
+}
+
 @keyframes matchAnim {
  0% {
   background: #bcffcc;
