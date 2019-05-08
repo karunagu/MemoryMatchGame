@@ -20,7 +20,8 @@ Header {
     font-family: Josefin Sans;
     font-size: 16px;
     float: right;
-      }
+    margin-left: 10px;
+    }
 
   .high-score{
     text-align: center;
@@ -28,6 +29,7 @@ Header {
     font-family: Josefin Sans;
     font-size: 16px;
     float: right;
+    margin-left: 10px;
     }
 
   .about{
@@ -36,9 +38,9 @@ Header {
         font-family: Josefin Sans;
         font-size: 16px;
         float: right;
+        margin-left: 10px;
     }
-
-    
+  
  
   p {
     font-size: 14px;

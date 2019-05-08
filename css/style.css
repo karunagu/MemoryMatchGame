@@ -84,6 +84,7 @@ color: white;
 font-family: Josefin Sans;
 font-size: 16px;
 float: right;
+margin-left: 10px;
 }
 
 .about{
@@ -91,7 +92,8 @@ float: right;
   color: white;
   font-family: Josefin Sans;
   font-size: 16px;
-  float: right;
+  float: right;  
+  margin-left: 10px;
 }
 
 @keyframes matchAnim {
