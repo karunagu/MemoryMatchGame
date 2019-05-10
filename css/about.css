@@ -19,11 +19,11 @@ Header {
     color: white;
     font-family: Josefin Sans;
     font-size: 16px;
-    float: right;
+    float: left;
     margin-left: 10px;
     }
 
-  .high-score{
+.high-score{
     text-align: center;
     color: white;
     font-family: Josefin Sans;
@@ -32,19 +32,27 @@ Header {
     margin-left: 10px;
     }
 
-  .about{
+.about{
         text-align: center;
         color: white;
         font-family: Josefin Sans;
         font-size: 16px;
         float: right;
         margin-left: 10px;
-    }
-  
- 
-  p {
+}
+
+p {
     font-size: 14px;
     font-family: Josefin Sans;
     text-align: center;
     padding: 10px;
-  }
+    color: white;
+}
+
+.mem-link-list {
+  font-size: 30px;
+  font-family: Stylish;
+  text-align: center;
+  padding: 26px;
+  color: white;
+}
