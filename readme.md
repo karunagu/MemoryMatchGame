@@ -1,3 +1,6 @@
+**Memory Match:**
+Welcome to our Memory Match Game! Enter your name and start playing. Test your memory power with a bit of luck sprinkled in for fun!
+
 **User Stories:**
 
 * As a player, when I launch the website, I should see a home page with links pointing to different pages within the website. I should see the following links:
