@@ -38,10 +38,10 @@ Header {
     margin-left: 10px;
   }
   .about{
-    text-align: center;
+    text-align: left;
     color: white;
     font-family: Josefin Sans;
     font-size: 16px;
-    float: right;
+    float: left;
     margin-left: 10px;
   }
