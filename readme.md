@@ -1,4 +1,4 @@
-##User Stories:##
+**User Stories:**
 
 * As a player, when I launch the website, I should see a home page with links pointing to different pages within the website. I should see the following links:
     - Home - Landing page 
