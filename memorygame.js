@@ -177,7 +177,7 @@ function itemClick(event){
 
   if(isGameCompleted()){
     storeResults();
-    alert('Congratulations On Completing Game. You Have Ok Memory');
+    alert('Congratulations On Completing Game. You Have Average Memory');
   }
 }
 
