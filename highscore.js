@@ -26,9 +26,22 @@ function render() {
     var eachElement = Result.allResults[i];
     newRow.innerHTML = `<td> ${eachElement.name} </td> <td> ${eachElement.clickCount} </td> <td> ${eachElement.datePlayed} </td>`;
     table.appendChild(newRow);
+
   }
 }
+function compare(a, b) {
+  var aClickcount = parseInt(a.clickCount);
+  var bClickcount = parseInt(b.clickCount);
+  if (a.clickCount < b.clickCount) return -1;
+  if (b.clickCount < a.clickCount) return 1;
+
+  return 0;
+}
+
+
 getResults();
+Result.allResults.sort(compare);
 render();
+
 console.log('end here');
 
