@@ -209,7 +209,7 @@ function storeResults(){
   }
   var nameInput = document.getElementsByName('FirstName')[0];
   var date = new Date();
-  var dateFormat = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
+  var dateFormat = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
   new Result(nameInput.value, clickCount, dateFormat);
   localStorage.setItem('memorygame.results', JSON.stringify(Result.allResults));
 }
