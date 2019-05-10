@@ -58,16 +58,13 @@ body {
 }
 
 .start-button {
-  margin-left: 570px;
   background-color: rgb(128, 112, 197);
   padding: 10px 32px;
   text-decoration: none;
   color: white;
-  display: inline-block;
   border: none;
   font-family: Josefin Sans;
   font-size: 16px;
-  position: left;
 }
 
 .center {
